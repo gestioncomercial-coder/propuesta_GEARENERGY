@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gear Energy × Xperts Consulting — Propuesta Fluig 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --green:     #5cb85c;
+    --green2:    #4aaa4a;
+    --blue:      #29ABE2;
+    --blue2:     #1a8fc2;
+    --dark:      #2d3a3a;
+    --body-bg:   #f4f6f4;
+    --card-bg:   #ffffff;
+    --border:    #e0e7e0;
+    --text:      #2d3a3a;
+    --muted:     #637063;
+    --white:     #ffffff;
+    --grad:      linear-gradient(135deg, #5cb85c 0%, #29ABE2 100%);
+    --grad-g:    linear-gradient(135deg, #5cb85c 0%, #4aaa4a 100%);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--body-bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; line-height: 1.2; color: var(--dark); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-logo { width: 36px; height: 36px; background: var(--grad-g); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .nav-brand span { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px; color: var(--dark); }
+  .nav-brand small { color: var(--muted); font-size: 12px; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600; transition: color .2s; }
+  .nav-links a:hover { color: var(--green2); }
+  .nav-pill { background: var(--grad-g); color: #fff; border: none; border-radius: 999px; padding: 9px 22px; font-size: 13px; font-weight: 700; font-family: 'Outfit',sans-serif; cursor: pointer; text-decoration: none; transition: opacity .2s; box-shadow: 0 2px 10px rgba(92,184,92,.3); }
+  .nav-pill:hover { opacity: .88; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 100px 2.5rem 5rem;
+    background: linear-gradient(160deg, #ffffff 0%, #eaf5ea 55%, #e0f0f8 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero-blob { position: absolute; top: -120px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(92,184,92,.12) 0%, transparent 70%); pointer-events: none; }
+  .hero-blob2 { position: absolute; bottom: -80px; left: -60px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(41,171,226,.10) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(92,184,92,.12); border: 1px solid rgba(92,184,92,.3); border-radius: 999px; padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--green2); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .hero-tag span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+  .hero h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -.02em; margin-bottom: 1.4rem; color: var(--dark); }
+  .hero h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 460px; margin-bottom: 2.5rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--grad-g); color: #fff; padding: 14px 28px; border-radius: 10px; font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 14px; text-decoration: none; box-shadow: 0 4px 16px rgba(92,184,92,.35); transition: transform .2s, opacity .2s; display: inline-block; }
+  .btn-primary:hover { transform: translateY(-2px); opacity: .92; }
+  .btn-ghost { background: transparent; color: var(--dark); padding: 14px 28px; border-radius: 10px; font-family: 'Outfit',sans-serif; font-weight: 600; font-size: 14px; text-decoration: none; border: 1.5px solid var(--border); transition: border-color .2s, color .2s; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green2); }
+  .hero-right { display: flex; flex-direction: column; gap: 1rem; }
+  .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .stat-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.4rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,.05); transition: border-color .2s, transform .2s; }
+  .stat-card:hover { border-color: var(--green); transform: translateY(-2px); }
+  .stat-card .icon { font-size: 1.5rem; margin-bottom: .5rem; }
+  .stat-card .num { font-family: 'Outfit',sans-serif; font-size: 1.7rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-card .lbl { font-size: 12px; color: var(--muted); margin-top: 2px; font-weight: 500; }
+  .hero-callout { background: linear-gradient(135deg, rgba(92,184,92,.07), rgba(41,171,226,.07)); border: 1.5px solid rgba(92,184,92,.22); border-radius: 16px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 12px; }
+  .hero-callout .ic { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .hero-callout p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .hero-callout strong { color: var(--green2); }
+
+  /* SECTION */
+  .section { padding: 6rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green2); margin-bottom: .6rem; }
+  .section-title { font-size: clamp(1.8rem, 2.8vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; margin-bottom: .9rem; }
+  .section-subtitle { font-size: 1rem; color: var(--muted); max-width: 560px; margin-bottom: 3rem; }
+  hr.divider { border: none; border-top: 1px solid var(--border); }
+
+  /* FLUIG BANNER */
+  .fluig-banner { background: var(--dark); color: #fff; padding: 4.5rem 2.5rem; }
+  .fluig-banner-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+  .fluig-banner .sl { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: .6rem; }
+  .fluig-banner h2 { font-size: clamp(1.7rem, 2.5vw, 2.3rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+  .fluig-banner h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .fluig-banner p { color: #a0b0a0; font-size: .95rem; line-height: 1.7; }
+  .fluig-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+  .fluig-pills span { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; font-size: 12px; color: #d4d4d4; padding: 5px 14px; font-weight: 500; }
+  .fluig-features { display: flex; flex-direction: column; gap: .9rem; }
+  .fluig-feat { display: flex; align-items: flex-start; gap: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09); border-radius: 12px; padding: 1rem 1.2rem; }
+  .fluig-feat .ico { font-size: 1.4rem; flex-shrink: 0; }
+  .fluig-feat h4 { font-size: .9rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  .fluig-feat p { font-size: .82rem; color: #8a9a8a; line-height: 1.55; }
+
+  /* PAIN */
+  .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.2rem; }
+  .pain-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.6rem; box-shadow: 0 2px 10px rgba(0,0,0,.04); transition: transform .2s, border-color .2s; }
+  .pain-card:hover { transform: translateY(-3px); border-color: #f0b429; }
+  .tag-warn { display: inline-block; background: #fff8e6; color: #b07d00; border: 1px solid #f0d080; border-radius: 999px; font-size: 11px; font-weight: 600; padding: 3px 10px; margin-bottom: 1rem; }
+  .pain-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+  .pain-card p { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+
+  /* CAPS */
+  .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; }
+  .cap-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.6rem 1.4rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.04); transition: border-color .2s, transform .2s; }
+  .cap-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .cap-card .cap-icon { font-size: 2rem; margin-bottom: .8rem; }
+  .cap-card h4 { font-size: .9rem; font-weight: 700; margin-bottom: .4rem; }
+  .cap-card p { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+
+  /* AI */
+  .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .ai-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.8rem; box-shadow: 0 2px 8px rgba(0,0,0,.04); transition: border-color .2s, transform .2s; }
+  .ai-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .ai-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(41,171,226,.1); color: var(--blue2); border: 1px solid rgba(41,171,226,.25); border-radius: 999px; font-size: 11px; font-weight: 600; padding: 4px 12px; margin-bottom: .9rem; }
+  .ai-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+  .ai-card > p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+  .ai-steps { display: flex; flex-direction: column; gap: .5rem; margin-top: .8rem; }
+  .ai-step { display: flex; align-items: center; gap: 10px; font-size: .82rem; color: var(--muted); }
+  .ai-step .dot { width: 22px; height: 22px; background: var(--grad-g); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 11px; flex-shrink: 0; }
+
+  /* SOLUTIONS */
+  .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+  .sol-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.8rem; box-shadow: 0 2px 10px rgba(0,0,0,.04); transition: border-color .2s, transform .2s; }
+  .sol-card:hover { border-color: var(--green); transform: translateY(-3px); }
+  .sol-num { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 9px; background: var(--grad-g); color: #fff; font-family: 'Outfit',sans-serif; font-weight: 800; font-size: 14px; margin-bottom: 1rem; }
+  .sol-phase { display: inline-block; background: rgba(92,184,92,.1); color: var(--green2); border: 1px solid rgba(92,184,92,.25); border-radius: 999px; font-size: 11px; font-weight: 600; padding: 3px 10px; margin-bottom: .7rem; }
+  .sol-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
+  .sol-card > p { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+  .relevance { background: #f0faf0; border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: .8rem 1rem; margin: 1rem 0; font-size: .83rem; color: var(--muted); line-height: 1.6; }
+  .relevance strong { color: var(--green2); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: .75rem; }
+  .tags span { background: #f0f4f0; border: 1px solid var(--border); border-radius: 999px; font-size: 11px; color: var(--muted); padding: 3px 10px; font-weight: 500; }
+
+  /* ROADMAP */
+  .roadmap { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; position: relative; }
+  .roadmap::before { content:''; position: absolute; top: 2.3rem; left: calc(16.66% + 1rem); right: calc(16.66% + 1rem); height: 2px; background: linear-gradient(90deg, var(--green), var(--blue)); z-index: 0; }
+  .road-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.8rem; position: relative; z-index: 1; box-shadow: 0 2px 10px rgba(0,0,0,.05); transition: border-color .2s; }
+  .road-card:hover { border-color: var(--green); }
+  .road-step { width: 42px; height: 42px; background: var(--grad-g); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Outfit',sans-serif; font-weight: 800; font-size: 16px; color: #fff; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(92,184,92,.35); }
+  .road-time { font-size: 11px; color: var(--green2); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .4rem; }
+  .road-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .8rem; }
+  .road-card ul { list-style: none; }
+  .road-card ul li { font-size: .84rem; color: var(--muted); padding: .3rem 0; display: flex; align-items: flex-start; gap: 8px; }
+  .road-card ul li::before { content:'✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* WHY */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; }
+  .why-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.04); transition: border-color .2s; }
+  .why-card:hover { border-color: var(--green); }
+  .why-card .big { font-family: 'Outfit',sans-serif; font-size: 2.2rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .why-card .sub { font-size: .8rem; color: var(--muted); margin-top: 4px; font-weight: 500; }
+
+  /* BENEFITS */
+  .benefits-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .benefit { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.5rem 1.8rem; display: flex; align-items: flex-start; gap: 1.4rem; box-shadow: 0 2px 8px rgba(0,0,0,.04); transition: border-color .2s; }
+  .benefit:hover { border-color: var(--green); }
+  .benefit-num { font-family: 'Outfit',sans-serif; font-size: 2.2rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; line-height: 1; }
+  .benefit h4 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
+  .benefit p { font-size: .87rem; color: var(--muted); line-height: 1.7; }
+
+  /* CTA */
+  .cta-wrap { background: var(--dark); border-radius: 24px; padding: 4rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(45,58,58,.2); }
+  .cta-wrap::before { content:''; position: absolute; top: -60%; right: -5%; width: 420px; height: 420px; background: radial-gradient(circle, rgba(92,184,92,.15), transparent 65%); pointer-events: none; }
+  .cta-wrap h2 { font-size: 2rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: .75rem; color: #fff; }
+  .cta-wrap h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .cta-wrap > div > p { color: #9aaa9a; font-size: .95rem; max-width: 480px; }
+  .cta-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .btn-white { background: #fff; color: var(--dark); padding: 14px 28px; border-radius: 10px; font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 14px; text-decoration: none; transition: transform .2s; display: inline-block; }
+  .btn-white:hover { transform: translateY(-2px); }
+  .btn-ghost-w { background: transparent; color: #fff; padding: 14px 28px; border-radius: 10px; font-family: 'Outfit',sans-serif; font-weight: 600; font-size: 14px; text-decoration: none; border: 1.5px solid rgba(255,255,255,.25); transition: border-color .2s; display: inline-block; }
+  .btn-ghost-w:hover { border-color: var(--green); color: var(--green); }
+  .cta-contact { display: flex; flex-direction: column; gap: 1rem; min-width: 230px; }
+  .cta-contact a { color: #c4d4c4; text-decoration: none; font-size: .87rem; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+  .cta-contact a:hover { color: var(--green); }
+  .label-s { font-size: 11px; color: #6a7a6a; text-transform: uppercase; letter-spacing: .08em; }
+  .name-s { font-weight: 700; font-size: .95rem; color: #fff; margin-top: .3rem; }
+
+  /* FOOTER */
+  footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,.08); padding: 1.5rem 2.5rem; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #6a7a6a; }
+
+  /* ANIM */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .cta-wrap { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: 1fr; }
+    .roadmap::before { display: none; }
+    .nav-links { display: none; }
+    .fluig-banner-inner { grid-template-columns: 1fr; }
+    .ai-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">⚡</div>
+    <div>
+      <span>Gear Energy × Xperts Consulting</span><br>
+      <small>Propuesta Comercial 2026</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#diagnostico">Diagnóstico</a>
+    <a href="#fluig">Fluig</a>
+    <a href="#soluciones">Soluciones</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a class="nav-pill" href="#contacto">Agendar reunión →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-tag"><span></span>Propuesta exclusiva · 2026</div>
+      <h1>La plataforma que <em>potencia</em> tu operación solar</h1>
+      <p>Una propuesta diseñada a medida para digitalizar los procesos comerciales, operativos y de gestión de proyectos de Gear Energy con TOTVS Fluig.</p>
+      <div class="hero-btns">
+        <a href="#soluciones" class="btn-primary">Ver propuesta completa ↓</a>
+        <a href="#contacto" class="btn-ghost">Agendar reunión</a>
+      </div>
+    </div>
+    <div class="hero-right fade-up" style="transition-delay:.2s">
+      <div class="hero-stat-grid">
+        <div class="stat-card"><div class="icon">☀️</div><div class="num">100%</div><div class="lbl">Digitalización de proyectos</div></div>
+        <div class="stat-card"><div class="icon">📋</div><div class="num">0</div><div class="lbl">Dependencia del Excel</div></div>
+        <div class="stat-card"><div class="icon">🤝</div><div class="num">CRM</div><div class="lbl">Gestión de clientes integrada</div></div>
+        <div class="stat-card"><div class="icon">⚡</div><div class="num">3 fases</div><div class="lbl">Implementación modular</div></div>
+      </div>
+      <div class="hero-callout">
+        <div class="ic">🎯</div>
+        <p>Propuesta dirigida a <strong>Gastón Elsezar, Germán Almonio y Nazarena Cícero</strong> — diseñada específicamente para la realidad operativa de Gear Energy hoy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- DIAGNÓSTICO -->
+<section class="section" id="diagnostico">
+  <div class="fade-up">
+    <div class="section-label">Análisis situacional</div>
+    <h2 class="section-title">Los desafíos actuales de Gear Energy</h2>
+    <p class="section-subtitle">Cuando la empresa crece, la complejidad aumenta. Más planillas, más carpetas, más tareas manuales, menos tiempo. Así lo vemos hoy en Gear Energy.</p>
+  </div>
+  <div class="pain-grid fade-up">
+    <div class="pain-card"><div class="tag-warn">⚠ Hoy</div><h4>Todo en Excel, nada centralizado</h4><p>La información de clientes, proyectos y proveedores vive en planillas dispersas. Sin una sola fuente de verdad, el trabajo se duplica y los errores son difíciles de evitar.</p></div>
+    <div class="pain-card"><div class="tag-warn">⚠ Hoy</div><h4>Sin CRM: los clientes se pierden en el camino</h4><p>No hay registro sistemático del seguimiento comercial. Los leads y oportunidades dependen de la memoria del equipo, no de un sistema.</p></div>
+    <div class="pain-card"><div class="tag-warn">⚠ Hoy</div><h4>Seguimiento de proyectos manual</h4><p>Con 3 personas en campo gestionando instalaciones, no hay visibilidad en tiempo real. El estado de avance depende de conversaciones informales.</p></div>
+    <div class="pain-card"><div class="tag-warn">⚠ Hoy</div><h4>Sin ficha de proveedores unificada</h4><p>La información de proveedores está fragmentada. No hay proceso estándar de onboarding ni documentación, lo que genera riesgos operativos.</p></div>
+    <div class="pain-card"><div class="tag-warn">⚠ Hoy</div><h4>Información que no escala</h4><p>Gear Energy está creciendo. La operación en Excel no escala. El momento ideal para digitalizar es ahora, antes de que el volumen lo haga más costoso.</p></div>
+    <div class="pain-card"><div class="tag-warn">⚠ Hoy</div><h4>Flujos trabados, productividad en riesgo</h4><p>Sin automatización, cada aprobación depende de un mensaje o llamado. Los documentos se pierden, las tareas quedan sin asignar y la productividad baja.</p></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FLUIG BANNER -->
+<div class="fluig-banner" id="fluig">
+  <div class="fluig-banner-inner fade-up">
+    <div>
+      <div class="sl">Ahí es donde entra</div>
+      <h2>TOTVS Fluig — <em>el software Low Code #1 de Brasil</em></h2>
+      <p>Una plataforma que acompaña el crecimiento de Gear Energy y transforma el caos operativo en capacidad productiva. Facilite, Produzca, Innove.</p>
+      <div class="fluig-pills">
+        <span>🔄 Gestión de procesos BPM</span>
+        <span>📁 Gestión documental</span>
+        <span>🔑 Control de accesos</span>
+        <span>📊 Indicadores en tiempo real</span>
+        <span>🤖 Inteligencia Artificial</span>
+        <span>📱 App móvil gratuita</span>
+        <span>🔗 Integración con WhatsApp</span>
+      </div>
+    </div>
+    <div class="fluig-features">
+      <div class="fluig-feat">
+        <div class="ico">🤖</div>
+        <div>
+          <h4>IA en la creación de procesos y formularios</h4>
+          <p>Describís el proceso con un prompt y Fluig lo transforma automáticamente en un flujo digital listo para personalizar.</p>
+        </div>
+      </div>
+      <div class="fluig-feat">
+        <div class="ico">📱</div>
+        <div>
+          <h4>My Fluig — App móvil gratuita</h4>
+          <p>Tu equipo de campo aprueba tareas, completa formularios y sigue proyectos desde el celular, con o sin conectividad.</p>
+        </div>
+      </div>
+      <div class="fluig-feat">
+        <div class="ico">🔗</div>
+        <div>
+          <h4>Integración nativa con ERP, CRM y WhatsApp</h4>
+          <p>Fluig se conecta fácilmente con los sistemas que ya usás. Sin silos de información, sin trabajo doble.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPACIDADES -->
+<section class="section">
+  <div class="fade-up">
+    <div class="section-label">Funcionalidades clave</div>
+    <h2 class="section-title">Una solución para todas las áreas de Gear Energy</h2>
+    <p class="section-subtitle">Fluig cubre desde lo comercial hasta lo operativo, con herramientas que el equipo completo puede usar desde el primer día.</p>
+  </div>
+  <div class="cap-grid fade-up">
+    <div class="cap-card"><div class="cap-icon">💼</div><h4>Comercial</h4><p>Pipeline, seguimiento y cierre de ventas digitalizados. Accesible desde cualquier lugar y dispositivo.</p></div>
+    <div class="cap-card"><div class="cap-icon">🔄</div><h4>Gestión de procesos</h4><p>Flujos de aprobación automáticos. Cada tarea tiene un responsable, un plazo y un registro auditable.</p></div>
+    <div class="cap-card"><div class="cap-icon">📁</div><h4>Gestión documental</h4><p>Contratos, proyectos y proveedores en un repositorio digital con búsqueda, versiones y acceso controlado.</p></div>
+    <div class="cap-card"><div class="cap-icon">🛒</div><h4>Compras y proveedores</h4><p>Ficha digital de proveedor, alta controlada, aprobación de órdenes de compra sin papel.</p></div>
+    <div class="cap-card"><div class="cap-icon">📊</div><h4>Indicadores en tiempo real</h4><p>Dashboards con KPIs de proyectos y operación disponibles en cualquier dispositivo y momento.</p></div>
+    <div class="cap-card"><div class="cap-icon">🌐</div><h4>Portal y red corporativa</h4><p>Comunidades internas, noticias y comunicación entre el equipo centralizada en una sola plataforma.</p></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- IA -->
+<section class="section">
+  <div class="fade-up">
+    <div class="section-label">Innovación · Inteligencia Artificial</div>
+    <h2 class="section-title">IA integrada en el corazón de Fluig</h2>
+    <p class="section-subtitle">Fluig Voyager 2.0 incorpora inteligencia artificial para que crear procesos y formularios sea tan fácil como escribir una idea.</p>
+  </div>
+  <div class="ai-grid fade-up">
+    <div class="ai-card">
+      <div class="ai-badge">🤖 IA · Procesos</div>
+      <h4>De un prompt a un proceso en segundos</h4>
+      <p>Describís el flujo que necesitás — por ejemplo, "proceso de aprobación de un proyecto solar residencial" — y Fluig genera el diagrama y las etapas automáticamente. Luego lo personalizás con tu lógica de negocio.</p>
+      <div class="ai-steps">
+        <div class="ai-step"><div class="dot">1</div>Escribís el prompt con tu idea</div>
+        <div class="ai-step"><div class="dot">2</div>La IA lo transforma en proceso</div>
+        <div class="ai-step"><div class="dot">3</div>Lo personalizás y publicás</div>
+      </div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-badge">🤖 IA · Formularios</div>
+      <h4>Formularios digitales creados con IA</h4>
+      <p>Describís los campos que necesitás — ficha de cliente, checklist de instalación, informe de obra — y Fluig construye el formulario digital listo para usar, con campos, validaciones y diseño incluidos.</p>
+      <div class="ai-steps">
+        <div class="ai-step"><div class="dot">1</div>Idea se transforma en prompt</div>
+        <div class="ai-step"><div class="dot">2</div>Prompt se transforma en formulario</div>
+        <div class="ai-step"><div class="dot">3</div>Lo personalizás y publicás</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SOLUCIONES -->
+<section class="section" id="soluciones">
+  <div class="fade-up">
+    <div class="section-label">Propuesta específica · FLUIG TOTVS</div>
+    <h2 class="section-title">Cómo Fluig transforma la operación de Gear Energy</h2>
+    <p class="section-subtitle">Tres módulos secuenciales, diseñados para el tamaño y la realidad de Gear Energy. Sin sobredimensionamiento, sin complejidad innecesaria.</p>
+  </div>
+  <div class="solution-grid fade-up">
+    <div class="sol-card">
+      <div class="sol-num">1</div>
+      <div class="sol-phase">Fase 1 · Prioridad alta</div>
+      <h3>CRM — Gestión Comercial</h3>
+      <p>Un pipeline comercial digital para gestionar leads, oportunidades y clientes desde el primer contacto hasta la firma del proyecto.</p>
+      <div class="relevance"><strong>Relevancia Gear Energy:</strong> Hoy el seguimiento comercial depende de quién recuerda qué. Con Fluig CRM, cada consulta queda registrada, con historial, estado y próximo paso claro para Gastón, Germán y Nazarena.</div>
+      <div class="tags"><span>Pipeline de oportunidades</span><span>Historial de clientes</span><span>Seguimiento de contactos</span><span>Alertas automáticas</span><span>Reportes comerciales</span></div>
+    </div>
+    <div class="sol-card">
+      <div class="sol-num">2</div>
+      <div class="sol-phase">Fase 2 · Prioridad media</div>
+      <h3>Ficha de Proveedores</h3>
+      <p>Un proceso digital de registro, onboarding y gestión de proveedores con documentación centralizada y flujos de aprobación automáticos.</p>
+      <div class="relevance"><strong>Relevancia Gear Energy:</strong> Trabajar con fabricantes de paneles, inversores y accesorios requiere información actualizada. Fluig centraliza contratos, certifica datos fiscales y evita operar sin documentación en regla.</div>
+      <div class="tags"><span>Ficha digital de proveedor</span><span>Carga de documentación</span><span>Aprobación de altas</span><span>Historial de operaciones</span><span>Alertas de vencimiento</span></div>
+    </div>
+    <div class="sol-card">
+      <div class="sol-num">3</div>
+      <div class="sol-phase">Fase 3 · Escalabilidad</div>
+      <h3>Seguimiento de Proyectos</h3>
+      <p>Gestión de proyectos solares end-to-end: desde la visita técnica hasta la puesta en marcha, con app móvil para el equipo en campo.</p>
+      <div class="relevance"><strong>Relevancia Gear Energy:</strong> Con 3 personas en campo, la visibilidad es crítica. El equipo gestiona tareas desde el celular con My Fluig. Sin llamadas para saber el estado — todo queda registrado en el momento.</div>
+      <div class="tags"><span>Etapas configurables</span><span>Asignación de responsables</span><span>Checklist de instalación</span><span>App móvil My Fluig</span><span>Cierre y entrega digital</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ROADMAP -->
+<section class="section" id="roadmap">
+  <div class="fade-up">
+    <div class="section-label">Plan de implementación</div>
+    <h2 class="section-title">Roadmap sugerido</h2>
+    <p class="section-subtitle">Implementación en ~3 meses — tiempos a confirmar en el diagnóstico inicial con el equipo de Gear Energy.</p>
+  </div>
+  <div class="roadmap fade-up">
+    <div class="road-card">
+      <div class="road-step">1</div>
+      <div class="road-time">Fase 1 · Semanas 1–3</div>
+      <h3>Kick-off y configuración</h3>
+      <ul>
+        <li>Relevamiento de procesos comerciales</li>
+        <li>Definición de etapas del pipeline CRM</li>
+        <li>Configuración del entorno cloud</li>
+        <li>Definición de usuarios y roles</li>
+        <li>Migración de datos desde Excel</li>
+      </ul>
+    </div>
+    <div class="road-card">
+      <div class="road-step">2</div>
+      <div class="road-time">Fase 2 · Semanas 4–8</div>
+      <h3>Implementación y capacitación</h3>
+      <ul>
+        <li>CRM activo con clientes cargados</li>
+        <li>Ficha de proveedores operativa</li>
+        <li>Flujos de aprobación configurados</li>
+        <li>Capacitación a todo el equipo</li>
+        <li>App móvil My Fluig instalada</li>
+      </ul>
+    </div>
+    <div class="road-card">
+      <div class="road-step">3</div>
+      <div class="road-time">Fase 3 · Semanas 9–12</div>
+      <h3>Go-live y seguimiento de proyectos</h3>
+      <ul>
+        <li>Módulo de proyectos en producción</li>
+        <li>Equipo de campo operando en móvil</li>
+        <li>Dashboards de KPIs activos</li>
+        <li>Soporte post-implementación</li>
+        <li>Ajustes y optimizaciones finales</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- POR QUÉ TOTVS -->
+<section class="section">
+  <div class="fade-up">
+    <div class="section-label">¿Por qué TOTVS?</div>
+    <h2 class="section-title">El respaldo detrás de la solución</h2>
+    <p class="section-subtitle">TOTVS es la empresa de tecnología más grande de América Latina, con presencia probada en Argentina.</p>
+  </div>
+  <div class="why-grid fade-up">
+    <div class="why-card"><div class="big">+30%</div><div class="sub">market share ERP en Latinoamérica</div></div>
+    <div class="why-card"><div class="big">23 años</div><div class="sub">de presencia en Argentina desde 1997</div></div>
+    <div class="why-card"><div class="big">USD 69M</div><div class="sub">inversión anual en I+D e innovación</div></div>
+    <div class="why-card"><div class="big">+500</div><div class="sub">clientes activos en LATAM</div></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- BENEFICIOS -->
+<section class="section">
+  <div class="fade-up">
+    <div class="section-label">Retorno de inversión</div>
+    <h2 class="section-title">Lo que gana Gear Energy</h2>
+    <p class="section-subtitle">Con Fluig, obtenés un retorno de tu inversión concreto y medible desde el primer mes de operación.</p>
+  </div>
+  <div class="benefits-list fade-up">
+    <div class="benefit"><div class="benefit-num">01</div><div><h4>Pipeline comercial visible de punta a punta</h4><p>Desde que un cliente pide una cotización hasta que firma el contrato — todo registrado. Gastón, Germán y Nazarena pueden ver en cualquier momento cuántas oportunidades están abiertas y qué acción tiene pendiente cada una.</p></div></div>
+    <div class="benefit"><div class="benefit-num">02</div><div><h4>Proyectos en campo con visibilidad real</h4><p>Las 3 personas que realizan las instalaciones gestionan sus tareas desde el celular con la app My Fluig. Sin llamadas para saber el estado de la obra. El avance queda registrado en el momento en que ocurre.</p></div></div>
+    <div class="benefit"><div class="benefit-num">03</div><div><h4>Adiós al Excel como sistema de gestión</h4><p>La información de clientes, proveedores y proyectos centralizada en un solo lugar, accesible para todo el equipo, con historial y búsqueda. Gear Energy pasa a operar con una plataforma profesional.</p></div></div>
+    <div class="benefit"><div class="benefit-num">04</div><div><h4>Proveedores gestionados con proceso, no con memoria</h4><p>Alta de proveedores con documentación completa, aprobación controlada y historial de operaciones. Nunca más un proveedor sin constancia de AFIP o sin contrato firmado.</p></div></div>
+    <div class="benefit"><div class="benefit-num">05</div><div><h4>Una base sólida para seguir creciendo</h4><p>La plataforma Fluig crece con Gear Energy. Si el equipo se duplica o se abren nuevas líneas de negocio, la base ya está construida. No hay que empezar de cero.</p></div></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CTA -->
+<section class="section" id="contacto">
+  <div class="cta-wrap fade-up">
+    <div>
+      <div class="section-label" style="color:#5cb85c;">¿Arrancamos?</div>
+      <h2>¿Hacemos un diagnóstico <em>sin costo</em>?</h2>
+      <p>Mapeamos juntos los procesos de Gear Energy y diseñamos un roadmap de implementación a medida, sin compromiso. La primera reunión es exploratoria y el diagnóstico no tiene costo.</p>
+      <div class="cta-btns">
+        <a href="mailto:rocio.pardo@xpertsconsulting.com" class="btn-white">Solicitar diagnóstico gratuito →</a>
+        <a href="https://wa.me/5491132335747" class="btn-ghost-w">WhatsApp directo</a>
+      </div>
+    </div>
+    <div class="cta-contact">
+      <div>
+        <div class="label-s">Contacto directo</div>
+        <div class="name-s">Rocío Pardo</div>
+        <p style="font-size:.8rem;color:#6a7a6a;margin-top:2px;">VP de Xperts Consulting</p>
+      </div>
+      <a href="tel:+5491132335747">📞 +54 11 3233-5747</a>
+      <a href="https://wa.me/5491132335747">💬 WhatsApp disponible</a>
+      <a href="mailto:rocio.pardo@xpertsconsulting.com">✉️ rocio.pardo@xpertsconsulting.com</a>
+      <div style="margin-top:.5rem;">
+        <p style="font-size:.8rem;color:#6a7a6a;">Xperts Consulting S.A. · Partner oficial TOTVS Argentina</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Gear Energy × Xperts Consulting · Propuesta Comercial 2026</span>
+  <span>Rocío Pardo · rocio.pardo@xpertsconsulting.com · +54 11 3233-5747</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
